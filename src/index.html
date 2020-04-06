@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/event-tester.esm.js"></script>
+  <script nomodule src="/build/event-tester.js"></script>
+
+</head>
+<body>
+
+  <h1>Tag Access Tests</h1>
+  <h2>No Shadow Component</h2>
+  <no-shadow-component></no-shadow-component>
+
+  <h2>No Shadow Container</h2>
+  <no-shadow-container>
+    <a href="www.google.com">Container test link</a>
+  </no-shadow-container>
+
+  <h2>Shadow Component</h2>
+  <shadow-component></shadow-component>
+
+  <h2>Shadow Container</h2>
+  <shadow-container>
+    <a href="www.google.com">Container test link</a>
+  </shadow-container>
+
+  <script>
+    function colourTags(colour, text) {
+      var aTags = document.getElementsByTagName("a");
+      for (var i = 0; i < aTags.length; i++) {
+        aTags[i].style.color = colour;
+        aTags[i].innerText += "(" + text + ")";
+        console.log(aTags[i]);
+      }
+    }
+
+    colourTags("green", "inline script");
+
+    window.onload = function(e){
+      colourTags("orange", "window.onload");
+    }
+
+    setTimeout(function(){
+      colourTags("red", "2 second delay");
+    }, 2000);
+
+    setTimeout(function(){
+      colourTags("grey", "4 second delay");
+    }, 4000);
+  </script>
+</body>
+</html>

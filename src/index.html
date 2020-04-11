@@ -28,6 +28,20 @@
     <a href="www.google.com">Container test link</a>
   </shadow-container>
 
+  <hr />
+
+  <h2>Psudo Data Layer Test</h2>
+  <shadow-container>
+    <psudo-data-layer-component
+      analytics-param-a-a="AA"
+      analytics-param-a-b="AB"
+      analytics-param-a-c="AC"
+      analytics-param-b-a="BA"
+      analytics-param-b-b="BB"
+      analytics-param-b-c="BC"
+    ></psudo-data-layer-component>
+  </shadow-container>
+
   <script>
     function colourTags(colour, text) {
       var aTags = document.getElementsByTagName("a");
@@ -51,6 +65,13 @@
     setTimeout(function(){
       colourTags("grey", "4 second delay");
     }, 4000);
+
+
+    // Log HelixEvents.
+    window.addEventListener('analyticsEvent', function (event) {
+      // Log the event name:
+      console.log(event.detail);
+    }, false);
   </script>
 </body>
 </html>

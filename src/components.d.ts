@@ -12,6 +12,14 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface NoShadowComponent {}
   interface NoShadowContainer {}
+  interface PsudoDataLayerComponent {
+    'analyticsParamAA': string;
+    'analyticsParamAB': string;
+    'analyticsParamAC': string;
+    'analyticsParamBA': string;
+    'analyticsParamBB': string;
+    'analyticsParamBC': string;
+  }
   interface ShadowComponent {}
   interface ShadowContainer {}
 }
@@ -31,6 +39,12 @@ declare global {
     new (): HTMLNoShadowContainerElement;
   };
 
+  interface HTMLPsudoDataLayerComponentElement extends Components.PsudoDataLayerComponent, HTMLStencilElement {}
+  var HTMLPsudoDataLayerComponentElement: {
+    prototype: HTMLPsudoDataLayerComponentElement;
+    new (): HTMLPsudoDataLayerComponentElement;
+  };
+
   interface HTMLShadowComponentElement extends Components.ShadowComponent, HTMLStencilElement {}
   var HTMLShadowComponentElement: {
     prototype: HTMLShadowComponentElement;
@@ -45,6 +59,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'no-shadow-component': HTMLNoShadowComponentElement;
     'no-shadow-container': HTMLNoShadowContainerElement;
+    'psudo-data-layer-component': HTMLPsudoDataLayerComponentElement;
     'shadow-component': HTMLShadowComponentElement;
     'shadow-container': HTMLShadowContainerElement;
   }
@@ -53,12 +68,22 @@ declare global {
 declare namespace LocalJSX {
   interface NoShadowComponent {}
   interface NoShadowContainer {}
+  interface PsudoDataLayerComponent {
+    'analyticsParamAA'?: string;
+    'analyticsParamAB'?: string;
+    'analyticsParamAC'?: string;
+    'analyticsParamBA'?: string;
+    'analyticsParamBB'?: string;
+    'analyticsParamBC'?: string;
+    'onAnalyticsEvent'?: (event: CustomEvent<any>) => void;
+  }
   interface ShadowComponent {}
   interface ShadowContainer {}
 
   interface IntrinsicElements {
     'no-shadow-component': NoShadowComponent;
     'no-shadow-container': NoShadowContainer;
+    'psudo-data-layer-component': PsudoDataLayerComponent;
     'shadow-component': ShadowComponent;
     'shadow-container': ShadowContainer;
   }
@@ -72,6 +97,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'no-shadow-component': LocalJSX.NoShadowComponent & JSXBase.HTMLAttributes<HTMLNoShadowComponentElement>;
       'no-shadow-container': LocalJSX.NoShadowContainer & JSXBase.HTMLAttributes<HTMLNoShadowContainerElement>;
+      'psudo-data-layer-component': LocalJSX.PsudoDataLayerComponent & JSXBase.HTMLAttributes<HTMLPsudoDataLayerComponentElement>;
       'shadow-component': LocalJSX.ShadowComponent & JSXBase.HTMLAttributes<HTMLShadowComponentElement>;
       'shadow-container': LocalJSX.ShadowContainer & JSXBase.HTMLAttributes<HTMLShadowContainerElement>;
     }

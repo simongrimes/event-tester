@@ -42,6 +42,13 @@
     ></psudo-data-layer-component>
   </shadow-container>
 
+  <hr />
+
+  <h2>Pierce Shadow Dom Test</h2>
+
+  <h2>Shadow Component</h2>
+  <shadow-component id="pierce-test"></shadow-component>
+
   <script>
     function colourTags(colour, text) {
       var aTags = document.getElementsByTagName("a");
@@ -66,12 +73,27 @@
       colourTags("grey", "4 second delay");
     }, 4000);
 
+    // Psudo Data Layer Test:
 
     // Log HelixEvents.
     window.addEventListener('analyticsEvent', function (event) {
       // Log the event name:
       console.log(event.detail);
     }, false);
+
+    // Pierce Shadow Dom Test:
+    window.addEventListener('load', function() {
+      var sd = document.getElementById('pierce-test');
+      var aTags = sd.shadowRoot.querySelectorAll('a');
+      for (var i = 0; i < aTags.length; i++) {
+        aTags[i].style.color = 'orange';
+        aTags[i].addEventListener('click', function() {
+          console.log("IN SHADOW CLICK DETECTED!");
+          return false;
+        });
+      }
+    }, false);
+
   </script>
 </body>
 </html>

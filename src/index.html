@@ -45,9 +45,10 @@
   <hr />
 
   <h2>Pierce Shadow Dom Test</h2>
-
-  <h2>Shadow Component</h2>
   <shadow-component id="pierce-test"></shadow-component>
+
+  <h2>Two Way Door Test</h2>
+  <two-way-door-component></two-way-door-component>
 
   <script>
     function colourTags(colour, text) {
@@ -94,6 +95,11 @@
       }
     }, false);
 
+    // Tow way door test.
+    var analyticsDoor = {
+      trackATagClick: true,
+      aTagClickFunctionName: "console.log ('A Tag Clicked');"
+    }
   </script>
 </body>
 </html>

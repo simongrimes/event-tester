@@ -22,6 +22,7 @@ export namespace Components {
   }
   interface ShadowComponent {}
   interface ShadowContainer {}
+  interface TwoWayDoorComponent {}
 }
 
 declare global {
@@ -56,12 +57,19 @@ declare global {
     prototype: HTMLShadowContainerElement;
     new (): HTMLShadowContainerElement;
   };
+
+  interface HTMLTwoWayDoorComponentElement extends Components.TwoWayDoorComponent, HTMLStencilElement {}
+  var HTMLTwoWayDoorComponentElement: {
+    prototype: HTMLTwoWayDoorComponentElement;
+    new (): HTMLTwoWayDoorComponentElement;
+  };
   interface HTMLElementTagNameMap {
     'no-shadow-component': HTMLNoShadowComponentElement;
     'no-shadow-container': HTMLNoShadowContainerElement;
     'psudo-data-layer-component': HTMLPsudoDataLayerComponentElement;
     'shadow-component': HTMLShadowComponentElement;
     'shadow-container': HTMLShadowContainerElement;
+    'two-way-door-component': HTMLTwoWayDoorComponentElement;
   }
 }
 
@@ -79,6 +87,7 @@ declare namespace LocalJSX {
   }
   interface ShadowComponent {}
   interface ShadowContainer {}
+  interface TwoWayDoorComponent {}
 
   interface IntrinsicElements {
     'no-shadow-component': NoShadowComponent;
@@ -86,6 +95,7 @@ declare namespace LocalJSX {
     'psudo-data-layer-component': PsudoDataLayerComponent;
     'shadow-component': ShadowComponent;
     'shadow-container': ShadowContainer;
+    'two-way-door-component': TwoWayDoorComponent;
   }
 }
 
@@ -100,6 +110,7 @@ declare module "@stencil/core" {
       'psudo-data-layer-component': LocalJSX.PsudoDataLayerComponent & JSXBase.HTMLAttributes<HTMLPsudoDataLayerComponentElement>;
       'shadow-component': LocalJSX.ShadowComponent & JSXBase.HTMLAttributes<HTMLShadowComponentElement>;
       'shadow-container': LocalJSX.ShadowContainer & JSXBase.HTMLAttributes<HTMLShadowContainerElement>;
+      'two-way-door-component': LocalJSX.TwoWayDoorComponent & JSXBase.HTMLAttributes<HTMLTwoWayDoorComponentElement>;
     }
   }
 }

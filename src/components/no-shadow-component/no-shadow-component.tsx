@@ -12,7 +12,7 @@ export class MyComponent {
   private addTag(name: string) {
     let div = this.el.ownerDocument.createElement("div");
     let aTag = this.el.ownerDocument.createElement("a");
-    aTag.href = "www.google.com";
+    aTag.href = "https://www.google.com";
     aTag.innerText = name;
 
     div.appendChild(aTag);
@@ -30,7 +30,7 @@ export class MyComponent {
   render() {
     return <div>
       <p>no-shadow-component</p>
-      <a href="www.google.com">In Render test link</a>
+      <a href="https://www.google.com">In Render test link</a>
     </div>;
   }
 }
